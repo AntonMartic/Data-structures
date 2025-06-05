@@ -39,6 +39,7 @@ If you're on macOS, Apple Clang may not fully support `std::format`, so:
    ```
 
 > ✅ Note: The labs use `fmt::format` on macOS instead of `std::format`.
+
 > 🔁 Additionally, you may need to manually update linker settings or replace occurrences of std::format with fmt::format in your code files.
 
 ---
