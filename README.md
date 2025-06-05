@@ -40,7 +40,40 @@ If you're on macOS, Apple Clang may not fully support `std::format`, so:
 
 > ✅ Note: The labs use `fmt::format` on macOS instead of `std::format`.
 
-> 🔁 Additionally, you may need to manually update linker settings or replace occurrences of std::format with fmt::format in your code files.
+> 🔁 Additionally, you may need to manually update linker settings or replace occurrences of std::format with fmt::format in your code files. You can do this by the following steps:
+
+---
+
+**Configure Xcode for with linker updates:**
+
+A. Add Header Search Paths
+
+Open Xcode → Select your project.
+
+Navigate to: Build Settings → Search Paths → Header Search Paths
+
+Add:
+ ```bash
+/opt/homebrew/include
+ ```
+B. Link libfmt.dylib
+
+Go to: Build Phases → Link Binary With Libraries → +
+
+Click "Add Other..." → Add Files
+
+Press Cmd+Shift+G, paste:
+```bash
+/opt/homebrew/lib/libfmt.dylib
+```
+Select the file and click Open
+
+C. (Optional) Header-Only Mode
+
+To avoid linking altogether, define this macro under Build Settings → Preprocessor Macros:
+```bash
+FMT_HEADER_ONLY=1
+```
 
 ---
 
